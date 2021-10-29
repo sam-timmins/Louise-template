@@ -322,14 +322,14 @@
             let currentYear = date.getUTCFullYear();
             let currentMsec = date.getUTCMilliseconds();
 
-            let stamp = `${currentDate}${currentDay}${currentYear}${currentMsec}`;
+            let timestamp = `${currentDate}${currentDay}${currentYear}${currentMsec}`;
 
 
             document.getElementById("download")
                 .addEventListener("click", () => {
 
                     var opt = {
-                        filename: `${assignmentTitle}${stamp}`,
+                        filename: `${assignmentTitle}${timestamp}`,
                         margin: [6, 8, 8, 6],
                         enableLinks: false,
                     };
