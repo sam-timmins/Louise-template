@@ -11,15 +11,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
     <script type="text/javascript"></script>
     <style>
+        /* Import font styles from Google */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+        /* Colour variables */
         :root {
             --blue: #004c6c;
             --red: #990000;
             --white: #ffffff;
+            --hover-blue: rgba(0, 76, 108, .2);
         }
 
+        /* 
+        Remove default styles and set new defaults.
+        Default font size is 16px, this sets it to 10px.
+        10px is equal to 1rem, this makes for cleaner reading.
+        */
         html {
             font-size: 62.5%;
         }
@@ -35,7 +43,6 @@
         body {
 
             font-size: 1.6rem;
-            font-family: 'Open Sans', sans-serif;
             background-color: var(--white);
             line-height: 1.6;
         }
@@ -57,7 +64,7 @@
             min-width: 70%;
         }
 
-        footer {
+        #footer {
             height: 5rem;
             width: 100%;
             background-color: var(--blue);
@@ -121,7 +128,7 @@
         }
 
         .btn-save:hover {
-            background-color: rgba(0, 76, 108, .2);
+            background-color: var(--hover-blue);
             color: var(--blue);
         }
 
@@ -137,6 +144,7 @@
             text-decoration: underline;
         }
 
+        /* Set responsive for a medium screen size (tablet) */
         @media only screen and (min-width: 768px) {
             .container h2 {
                 margin: 2rem auto 2rem 4rem;
@@ -152,6 +160,7 @@
             }
         }
 
+        /* Set responsive for a large screen size (desktop) */
         @media only screen and (min-width: 992px) {
             .page-title-container h1 {
                 font-size: 3rem;
@@ -303,18 +312,40 @@
         </footer>
 
     </div>
+    <!-- CDN for jquery -->
     <script src="https://code.jquery.com/jquery-3.2.1.js"
-        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+    </script>
+
     <script>
+        /*
+       
+        THE JS WILL WORK WITHOUT ANYTHING BEING CHANGED
+        
+        THE ONLY THING TO ADJUST IS THE STYLES OF THE PDF 
+        
+        */
+
+        /* When the window is fully loaded, this script then runs */
         window.onload = function () {
 
+            /* 
+            This automatically updates the date in the footer to the current year 
+            using the <span id="date">
+            */
             $('#date').text(new Date().getFullYear())
 
+            /* SAVE PDF */
 
+            /* Creates a variable of the text in the assignment title to feed into the saved file name */
             const assignmentTitle = document.querySelector('#assignment-title').innerHTML;
+            /*
+            Creates a variable for the content of the document, there is a <div id="full-document">
+            containing the whole HTML. You can move this about to suit.
+            */
             const fullDocumentRef = document.querySelector("#full-document");
-            const footerRef = document.querySelector("#footer");
 
+            /* CREATE THE TIMESTAMP */
             const date = new Date();
 
             let currentDate = date.getUTCDate();
@@ -322,19 +353,32 @@
             let currentYear = date.getUTCFullYear();
             let currentMsec = date.getUTCMilliseconds();
 
+            /*
+            Creates a template literal using the data from the above with the timestamp in it
+            */
             let timestamp = `${currentDate}${currentDay}${currentYear}${currentMsec}`;
 
-
+            /* Downloads pdf when the button (with id="download") is clicked */
             document.getElementById("download")
                 .addEventListener("click", () => {
 
-                    var opt = {
+                    /*
+                    Styling for the pdf, there are loads of different styles in the documentation
+                    https://ekoopmans.github.io/html2pdf.js/#options 
+                    */
+                    const opt = {
                         filename: `${assignmentTitle}${timestamp}`,
-                        margin: [6, 8, 8, 6],
+                        /* [top, right, bottom, left] */
+                        margin: [10, 8, 8, 8],
+                        /* This disables the links in the pdf */
                         enableLinks: false,
                     };
 
-
+                    /*
+                    This creates the pdf
+                    .from(content of the document)
+                    .set(details from the object in the const opt)
+                    */
                     html2pdf().from(fullDocumentRef).set(opt).save();
                 })
         }
