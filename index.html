@@ -8,8 +8,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script async="true" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=AM_CHTML"> </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/jsPDF/dist/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script type="text/javascript"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
@@ -65,25 +65,9 @@
             margin-top: 3rem;
         }
 
-        .btn-container {
-            margin-top: 3rem;
-        }
-
-        .btn-save {
-            width: 15rem;
-            height: 3rem;
+        .footer-text {
             margin: auto;
-            background-color: var(--blue);
-            color: var(--white);
-            border-radius: 5px;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        .btn-save:hover {
-            background-color: rgba(0, 76, 108, .1);
-            color: var(--blue);
-            border: 1px solid var(--blue);
+            text-align: center;
         }
 
         .font-roboto {
@@ -120,6 +104,25 @@
         .page-title-container h1 {
             color: var(--white);
             font-size: 2rem;
+        }
+
+        .pdf-container {
+            margin-top: 6rem;
+            width: 100%;
+        }
+
+        .btn-save {
+            height: 4rem;
+            padding: 1rem;
+            background-color: var(--blue);
+            color: var(--white);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-save:hover {
+            background-color: rgba(0, 76, 108, .2);
+            color: var(--blue);
         }
 
         .equation {
@@ -172,134 +175,171 @@
 
 <body>
 
-    <div class="page-title-container font-roboto display-flex center-all container">
-        <h1 id="assignment-title">Assignment 1 - Specification</h1>
-    </div>
+    <div id="full-document">
+        <div class="page-title-container font-roboto display-flex center-all container">
+            <h1 id="assignment-title">Assignment 1 - Specification</h1>
+        </div>
 
-    <div class="container center-all">
-        <h2>Introduction</h2>
-        <p>Now that you have practised building programmes using visual basic applications with Excel, with&nbsp;
-            the help of online videos, it is time to build
-            your own program.</p>
-        <p>Below are your individual specifications for this assignment. There are multiple versions, each student
-            must complete their allocated problem.</p>
-        <p>This is an <span class="red-text"><strong>individual</strong></span> assignment. Ensure you are
-            familiar with the <a href="https://www.tudublin.ie/explore/about-the-university/academic-affairs/quality-framework/city-centre-quality-assurance/student-assessment-regulations/general-assessment-regulations/
+        <div class="container center-all">
+            <h2>Introduction</h2>
+            <p>Now that you have practised building programmes using visual basic applications with Excel, with&nbsp;
+                the help of online videos, it is time to build
+                your own program.</p>
+            <p>Below are your individual specifications for this assignment. There are multiple versions, each student
+                must complete their allocated problem.</p>
+            <p>This is an <span class="red-text"><strong>individual</strong></span> assignment. Ensure you are
+                familiar with the <a href="https://www.tudublin.ie/explore/about-the-university/academic-affairs/quality-framework/city-centre-quality-assurance/student-assessment-regulations/general-assessment-regulations/
                     " target="_blank" rel="noopener">TU Dublin’s regulations</a> in relation to plagiarism. Any sign
-            that submitted work was not your own work, or someone submitted your work as their own, will result in
-            disciplinary action to <span class="underline">both parties</span>.</p>
-        <p>Submission should contain:</p>
-        <ul>
-            <li>Completed declaration</li>
-            <li>Section 1 - 7: Handwritten Sections
-                <ul class="sub-list">
-                    <li> These sections of the
-                        <a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&amp;type=content&amp;rcode=4EAAD6F1-BECE-42E8-A5C8-884D621E0300-866146"
-                            target="_self">
-                            template document</a>, MUST be handwritten.
-                    </li>
-                </ul>
-            </li>
-            <li>Section 8 - 11
-                <ul class="sub-list">
-                    <li>These sections will contain screenshots, with additional typed information, added to the
-                        <a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&amp;type=content&amp;rcode=4EAAD6F1-BECE-42E8-A5C8-884D621E0300-866146"
-                            target="_self">template document</a>.
-                    </li>
-                </ul>
-            <li>Completed Excel file - in Macro-Enabled Workbook format. </li>
-        </ul>
+                that submitted work was not your own work, or someone submitted your work as their own, will result in
+                disciplinary action to <span class="underline">both parties</span>.</p>
+            <p>Submission should contain:</p>
+            <ul>
+                <li>Completed declaration</li>
+                <li>Section 1 - 7: Handwritten Sections
+                    <ul class="sub-list">
+                        <li> These sections of the
+                            <a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&amp;type=content&amp;rcode=4EAAD6F1-BECE-42E8-A5C8-884D621E0300-866146"
+                                target="_self">
+                                template document</a>, MUST be handwritten.
+                        </li>
+                    </ul>
+                </li>
+                <li>Section 8 - 11
+                    <ul class="sub-list">
+                        <li>These sections will contain screenshots, with additional typed information, added to the
+                            <a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&amp;type=content&amp;rcode=4EAAD6F1-BECE-42E8-A5C8-884D621E0300-866146"
+                                target="_self">template document</a>.
+                        </li>
+                    </ul>
+                <li>Completed Excel file - in Macro-Enabled Workbook format. </li>
+            </ul>
 
-        <p>Significant marks will be lost if any part is not included in the submission.&nbsp;</p>
-        <p>When a client specifies how they want a job done, they expect their consultant to meet these
-            specifications. Similarly, if you fail to meet the specification of this assignment, you will
-            lose marks. </p>
+            <p>Significant marks will be lost if any part is not included in the submission.&nbsp;</p>
+            <p>When a client specifies how they want a job done, they expect their consultant to meet these
+                specifications. Similarly, if you fail to meet the specification of this assignment, you will
+                lose marks. </p>
 
-        <p> To avoid unnecessarily lost marks, prior to the submission, check you have
-            completed the following</p>
-        <ul>
-            <li>Excel file has been saved as a Macro-Enabled Workbook – failure to do this will result in the
-                submission
-                of a blank excel file – which results in lost marks.</li>
-            <li>The report has been scanned to PDF and combined into a single file. Mobile apps such as Microsoft
-                Lens,
-                Adobe scan and many others are available to do this.&nbsp;</li>
-            <li>Sections that are required to be handwritten are done so. These sections submitted typed, will
-                result in
-                lost marks.</li>
-            <li>The PDF is checked before submission to ensure all pages are present, in the correct order, legible
-                with
-                the correct orientation. Any missing or illegible content will result in lost
-                marks.</li>
-        </ul>
-        <p>Any queries on the assignment should be asked on the class discussion board on Brightspace.</p>
+            <p> To avoid unnecessarily lost marks, prior to the submission, check you have
+                completed the following</p>
+            <ul>
+                <li>Excel file has been saved as a Macro-Enabled Workbook – failure to do this will result in the
+                    submission
+                    of a blank excel file – which results in lost marks.</li>
+                <li>The report has been scanned to PDF and combined into a single file. Mobile apps such as Microsoft
+                    Lens,
+                    Adobe scan and many others are available to do this.&nbsp;</li>
+                <li>Sections that are required to be handwritten are done so. These sections submitted
+                    typed, will
+                    result in
+                    lost marks.</li>
+                <li>The PDF is checked before submission to ensure all pages are present, in the correct order, legible
+                    with
+                    the correct orientation. Any missing or illegible content will result in lost
+                    marks.</li>
+            </ul>
+            <p>Any queries on the assignment should be asked on the class discussion board on Brightspace.</p>
+        </div>
+
+
+
+
+        <div class="container center-all">
+            <h2>Problem</h2>
+            <img src="/content/enforced/178647-EMAT260114933DT032-2122/90. Assignments/Assignment 1/Images/SS_parab.jpg"
+                alt="" data-d2l-editor-default-img-style="true"></p>
+            <p>This figure shows a simply supported beam of length <em>L</em> subjected to a sin curve varying load,
+                with maximum magnitude <em>q</em><sub>0</sub>, applied along its full length.</p>
+            <p>You should design a userform which contains an image of the beam, a frame for the input values, a
+                command button to trigger the calculations, and a frame to output the results.&nbsp;</p>
+            <p>The output should include:</p>
+            <ul>
+                <li>the maximum displacement</li>
+                <li>the displacement at a point x (provided by user)</li>
+                <li>the rotation of the support.</li>
+            </ul>
+            <p>All required equations are provided below.</p>
+
+
+        </div>
+        <hr>
+
+
+        <div class="container display-flex center-all">
+            <h2>Equations</h2>
+            <p>It can be assumed that the beam has a solid rectangular cross-section, therefore the second moment of
+                area is
+                given by:</p>
+            <p class="cmath equation">`I = frac(bd^3)(12)`</p>
+
+            <p>The maximum deflection in the centre of the beam is given by:</p>
+            <p class="cmath equation">`delta_(max) = frac(q_0 L^4)(pi^4 EI)`</p>
+
+
+            <p>The angle of rotation (slope) of the beam at the supports is given by:</p>
+            <p class="cmath equation">`theta_A= theta_B = frac(q_0 L^3)(pi^3 EI)`</p>
+
+            <p>The deflection at any distance x from the left-hand support is given by:</p>
+            <p class="cmath equation">`delta_x= frac(q_0 L^4)(pi^4 EI) sin frac(pi x)(L)`</p>
+
+            <p>Where:</p>
+            <ul>
+                <li>b = width of the beam</li>
+                <li>d = depth of the beam</li>
+                <li>L = length of the beam</li>
+                <li>E = Young's Modulus, you can take a default value for
+                    concrete of 30 GPa (30 kN/mm<sup>2</sup>)</li>
+                <li>q<sub>0</sub> = Maximum magnitude of sin curve varying load applied along the length of the
+                    beam.</li>
+            </ul>
+
+        </div>
+
+        <div class="pdf-container display-flex center-all">
+            <button class="btn-save" id="download">Save to PDF</button>
+        </div>
+
+        <footer id="footer" class="display-flex center-all">
+            <p class="footer-text">&copy; TU Dublin <span id="date"></span></p>
+        </footer>
+
     </div>
-
-
-
-
-    <div class="container center-all">
-        <h2>Problem</h2>
-        <img src="/content/enforced/178647-EMAT260114933DT032-2122/90. Assignments/Assignment 1/Images/SS_parab.jpg"
-            alt="" data-d2l-editor-default-img-style="true"></p>
-        <p>This figure shows a simply supported beam of length <em>L</em> subjected to a sin curve varying load,
-            with maximum magnitude <em>q</em><sub>0</sub>, applied along its full length.</p>
-        <p>You should design a userform which contains an image of the beam, a frame for the input values, a
-            command button to trigger the calculations, and a frame to output the results.&nbsp;</p>
-        <p>The output should include:</p>
-        <ul>
-            <li>the maximum displacement</li>
-            <li>the displacement at a point x (provided by user)</li>
-            <li>the rotation of the support.</li>
-        </ul>
-        <p>All required equations are provided below.</p>
-
-
-    </div>
-    <hr>
-
-
-    <div class="container display-flex center-all">
-        <h2>Equations</h2>
-        <p>It can be assumed that the beam has a solid rectangular cross-section, therefore the second moment of
-            area is
-            given by:</p>
-        <p class="cmath equation">`I = frac(bd^3)(12)`</p>
-
-        <p>The maximum deflection in the centre of the beam is given by:</p>
-        <p class="cmath equation">`delta_(max) = frac(q_0 L^4)(pi^4 EI)`</p>
-
-
-        <p>The angle of rotation (slope) of the beam at the supports is given by:</p>
-        <p class="cmath equation">`theta_A= theta_B = frac(q_0 L^3)(pi^3 EI)`</p>
-
-        <p>The deflection at any distance x from the left-hand support is given by:</p>
-        <p class="cmath equation">`delta_x= frac(q_0 L^4)(pi^4 EI) sin frac(pi x)(L)`</p>
-
-        <p>Where:</p>
-        <ul>
-            <li>b = width of the beam</li>
-            <li>d = depth of the beam</li>
-            <li>L = length of the beam</li>
-            <li>E = Young's Modulus, you can take a default value for
-                concrete of 30 GPa (30 kN/mm<sup>2</sup>)</li>
-            <li>q<sub>0</sub> = Maximum magnitude of sin curve varying load applied along the length of the
-                beam.</li>
-        </ul>
-    </div>
-    <div class="btn-container display-flex center-all">
-        <button class="btn-save" id="save-pdf">Save</button>
-    </div>
-
-
-    <footer class="display-flex center-all">
-        &copy; TU Dublin 2021
-    </footer>
-
-
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script>
+        window.onload = function () {
 
+            $('#date').text(new Date().getFullYear())
+
+
+            const assignmentTitle = document.querySelector('#assignment-title').innerHTML;
+            const fullDocumentRef = document.querySelector("#full-document");
+            const footerRef = document.querySelector("#footer");
+
+            const date = new Date();
+
+            let currentDate = date.getUTCDate();
+            let currentDay = date.getUTCDay();
+            let currentYear = date.getUTCFullYear();
+            let currentMsec = date.getUTCMilliseconds();
+
+            let stamp = `${currentDate}${currentDay}${currentYear}${currentMsec}`;
+
+
+            document.getElementById("download")
+                .addEventListener("click", () => {
+
+                    var opt = {
+                        filename: `${assignmentTitle}${stamp}`,
+                        margin: [6, 8, 8, 6],
+                        enableLinks: false,
+                    };
+
+
+                    html2pdf().from(fullDocumentRef).set(opt).save();
+                })
+        }
     </script>
+
 </body>
 
 </html>
