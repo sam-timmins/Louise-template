@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+:root {
+    --blue: #004c6c;
+    --red: #990000;
+    --white: #ffffff;
+    --green: #0A765A;
+    --rblue: #1d44b0;
+    --purple: #452A64;
+    --orange: #F0823C;
+    --pink: #B60057;
+    --black: #000000;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+
+    font-size: 1.6rem;
+    height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    background-color: var(--white);
+    line-height: 1.6;
+}
+
+/* Left these as a just in case reference */
+/*
+img {
+    max-width: 70%;
+    margin: auto;
+    display: block;
+
+}
+
+table,
+th,
+td {
+    text-align: center;
+    border: 0.5px solid var(--grey);
+    height: auto;
+    border-collapse: collapse;
+    padding: 1rem;
+}
+
+table {
+    width: 80%;
+    margin-top: 3rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+*/
+
+/* General Styles */
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* Header */
+.page-title-container {
+    height: 7rem;
+    background-color: var(--blue);
+}
+
+.page-title-container-header {
+    color: var(--white);
+    font-size: 1.5rem;
+}
+
+/* Footer */
+.footer {
+    height: 5rem;
+    width: 100vw;
+    background-color: var(--blue);
+    color: var(--white);
+    margin-top: 3rem;
+}
+
+
+/* Sub-containers */
+
+.sub-container-header {
+    font-size: 3rem;
+}
+
+.sub-container-text {
+    font-size: 1.5rem;
+    color: var(--black);
+}
+
+
+/* Code styling */
+
+.font-code {
+    font-family: 'Abel', sans-serif;
+    font-size: 1.8rem;
+}
+/*
+.vb-indent-1 {
+    margin-right: 25rem;
+}
+
+.vb-indent-2 {
+    margin-right: 35rem;
+}
+*/
+.vb-comment {
+    color: var(--green);
+}
+
+.vb-action {
+    color: var(--rblue);
+}
+
+.equation {
+    text-align: center;
+    /*display:block;*/
+}
+
+.bottombold {
+    border-bottom: 1pt solid black;
+}
+
+.bottomdot {
+    border-bottom: 0.5pt dotted black;
+}
+
+.borderright {
+    border-right: 1pt solid black;
+}
+
+.borderleft {
+    border-left: 1pt solid black;
+}
+
+.bordertop {
+    border-top: 1pt solid black;
+}
+
+.tsmall {
+    width: 8%;
+}
+
+.tmed {
+    width: 20%;
+}
+
+.tlarge {
+    width: 60%;
+}
+
+.red-text {
+    color: var(--red);
+}
+
+.underline {
+    text-decoration: underline;
+}

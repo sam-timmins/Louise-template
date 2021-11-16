@@ -7,27 +7,28 @@
     <title>EMAT2601 | VBA - Assignment 1 - Specification</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
     <script async="true" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=AM_CHTML"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
     <script type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* Import font styles from Google */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
-        /* Colour variables */
         :root {
             --blue: #004c6c;
             --red: #990000;
             --white: #ffffff;
-            --hover-blue: rgba(0, 76, 108, .2);
+            --green: #0A765A;
+            --rblue: #1d44b0;
+            --purple: #452A64;
+            --orange: #F0823C;
+            --pink: #B60057;
+            --black: #000000;
         }
 
-        /* 
-        Remove default styles and set new defaults.
-        Default font size is 16px, this sets it to 10px.
-        10px is equal to 1rem, this makes for cleaner reading.
-        */
         html {
             font-size: 62.5%;
         }
@@ -43,97 +44,137 @@
         body {
 
             font-size: 1.6rem;
+            height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
             background-color: var(--white);
             line-height: 1.6;
         }
 
-        p,
-        ul {
-            margin: 1rem auto;
-        }
+        /* Left these as a just in case reference */
+        /*
+img {
+    max-width: 70%;
+    margin: auto;
+    display: block;
 
-        p {
-            width: 85%;
-        }
+}
 
-        ul {
-            width: 75%;
-        }
+table,
+th,
+td {
+    text-align: center;
+    border: 0.5px solid var(--grey);
+    height: auto;
+    border-collapse: collapse;
+    padding: 1rem;
+}
 
-        img {
-            min-width: 70%;
-        }
+table {
+    width: 80%;
+    margin-top: 3rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+*/
 
-        #footer {
-            height: 5rem;
-            width: 100%;
-            background-color: var(--blue);
-            color: var(--white);
-            margin-top: 3rem;
-        }
-
-        .footer-text {
-            margin: auto;
-            text-align: center;
-        }
-
+        /* General Styles */
         .font-roboto {
             font-family: 'Roboto', sans-serif;
         }
 
-        .display-flex {
-            display: flex;
-            flex-direction: column;
-        }
 
-        .center-all {
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-
-            width: 100%;
-            position: relative;
-        }
-
-        .container h2 {
-            margin: 2rem auto 2rem 2rem;
-            font-size: 2rem;
-            color: var(--blue);
-        }
-
+        /* Header */
         .page-title-container {
             height: 7rem;
             background-color: var(--blue);
         }
 
-        .page-title-container h1 {
+        .page-title-container-header {
             color: var(--white);
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
 
-        .pdf-container {
-            margin-top: 6rem;
-            width: 100%;
-        }
-
-        .btn-save {
-            height: 4rem;
-            padding: 1rem;
+        /* Footer */
+        .footer {
+            height: 5rem;
+            width: 100vw;
             background-color: var(--blue);
             color: var(--white);
-            border-radius: 5px;
-            cursor: pointer;
+            margin-top: 3rem;
         }
 
-        .btn-save:hover {
-            background-color: var(--hover-blue);
-            color: var(--blue);
+
+        /* Sub-containers */
+
+        .sub-container-header {
+            font-size: 3rem;
+        }
+
+        .sub-container-text {
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+
+
+        /* Code styling */
+
+        .font-code {
+            font-family: 'Abel', sans-serif;
+            font-size: 1.8rem;
+        }
+
+        .vb-indent-1 {
+            margin-right: 25rem;
+        }
+
+        .vb-indent-2 {
+            margin-right: 35rem;
+        }
+
+        .vb-comment {
+            color: var(--green);
+        }
+
+        .vb-action {
+            color: var(--rblue);
         }
 
         .equation {
             text-align: center;
+            /*display:block;*/
+        }
+
+        .bottombold {
+            border-bottom: 1pt solid black;
+        }
+
+        .bottomdot {
+            border-bottom: 0.5pt dotted black;
+        }
+
+        .borderright {
+            border-right: 1pt solid black;
+        }
+
+        .borderleft {
+            border-left: 1pt solid black;
+        }
+
+        .bordertop {
+            border-top: 1pt solid black;
+        }
+
+        .tsmall {
+            width: 8%;
+        }
+
+        .tmed {
+            width: 20%;
+        }
+
+        .tlarge {
+            width: 60%;
         }
 
         .red-text {
@@ -143,173 +184,227 @@
         .underline {
             text-decoration: underline;
         }
-
-        /* Set responsive for a medium screen size (tablet) */
-        @media only screen and (min-width: 768px) {
-            .container h2 {
-                margin: 2rem auto 2rem 4rem;
-            }
-
-            .equation {
-                text-align: left;
-                margin-left: 8rem;
-            }
-
-            .sub-list {
-                margin: 0.5 auto;
-            }
-        }
-
-        /* Set responsive for a large screen size (desktop) */
-        @media only screen and (min-width: 992px) {
-            .page-title-container h1 {
-                font-size: 3rem;
-            }
-
-            .container h2 {
-                margin: 2rem auto 2rem 6rem;
-                font-size: 2.5rem;
-            }
-
-            .equation {
-                margin-left: 20rem;
-            }
-
-            .sub-list {
-                margin-left: 8rem;
-            }
-        }
     </style>
 </head>
 
 <body>
 
     <div id="full-document">
-        <div class="page-title-container font-roboto display-flex center-all container">
-            <h1 id="assignment-title">Assignment 1 - Specification</h1>
+        <div class="page-title-container font-roboto d-flex justify-content-center align-items-center container-fluid">
+            <h1 class="page-title-container-header">Session 8 - Database Processing</h1>
         </div>
 
-        <div class="container center-all">
-            <h2>Introduction</h2>
-            <p>Now that you have practised building programmes using visual basic applications with Excel, with&nbsp;
-                the help of online videos, it is time to build
-                your own program.</p>
-            <p>Below are your individual specifications for this assignment. There are multiple versions, each student
-                must complete their allocated problem.</p>
-            <p>This is an <span class="red-text"><strong>individual</strong></span> assignment. Ensure you are
-                familiar with the <a href="https://www.tudublin.ie/explore/about-the-university/academic-affairs/quality-framework/city-centre-quality-assurance/student-assessment-regulations/general-assessment-regulations/
-                    " target="_blank" rel="noopener">TU Dublin’s regulations</a> in relation to plagiarism. Any sign
-                that submitted work was not your own work, or someone submitted your work as their own, will result in
-                disciplinary action to <span class="underline">both parties</span>.</p>
-            <p>Submission should contain:</p>
-            <ul>
-                <li>Completed declaration</li>
-                <li>Section 1 - 7: Handwritten Sections
-                    <ul class="sub-list">
-                        <li> These sections of the
-                            <a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&amp;type=content&amp;rcode=4EAAD6F1-BECE-42E8-A5C8-884D621E0300-866146"
-                                target="_self">
-                                template document</a>, MUST be handwritten.
-                        </li>
-                    </ul>
-                </li>
-                <li>Section 8 - 11
-                    <ul class="sub-list">
-                        <li>These sections will contain screenshots, with additional typed information, added to the
-                            <a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&amp;type=content&amp;rcode=4EAAD6F1-BECE-42E8-A5C8-884D621E0300-866146"
-                                target="_self">template document</a>.
-                        </li>
-                    </ul>
-                <li>Completed Excel file - in Macro-Enabled Workbook format. </li>
-            </ul>
+        <div class="sub-container container-fluid px-5 py-2">
+            <h2 class="sub-container-header mx-0 my-4 p-0">Text Files</h2>
+            <div class="mx-3 mx-md-5">
+                <p class="sub-container-text mx-0 my-4 p-0">In addition to direct typed/selected input, we can also
+                    input
+                    data from a file and output data to a file.
+                </p>
+                <p class="sub-container-text mx-0 my-4 p-0">A <em>text file</em> contains unformatted information in the
+                    form of text characters and can be read by
+                    most
+                    applications, including a spreadsheet or word processor. It typically has a .txt or .dat extension.
+                </p>
+                <p class="sub-container-text mx-0 my-4 p-0">Information is stored in one or more <em>fields</em> in one
+                    or
+                    more lines. The fields are delimited by
+                    some
+                    specified character such as a comma, tab or space. For example, a text file containing the class
+                    list
+                    would
+                    have a <em>field</em> for student numbers and another <em>field</em> for student names. In a
+                    spreadsheet
+                    format, these <em>fields</em> would be a column of data.</p>
+            </div>
+        </div>
 
-            <p>Significant marks will be lost if any part is not included in the submission.&nbsp;</p>
-            <p>When a client specifies how they want a job done, they expect their consultant to meet these
-                specifications. Similarly, if you fail to meet the specification of this assignment, you will
-                lose marks. </p>
+        <div class="sub-container container-fluid px-5 my-2">
+            <h2 class="sub-container-header mx-0  p-0">Using Text Files in VBA</h2>
+            <div class="mx-3 mx-md-5">
+                <p class="sub-container-text mx-0  p-0">To use a text file first <em>open</em> for either <em>input</em>
+                    (when you wish to read from file) or
+                    <em>output</em> (when you wish to write to the file).</p>
+                <p class="sub-container-text mx-0  p-0">Once opened, the file is read sequentially from the beginning of
+                    the
+                    file to the end of the file. The
+                    text
+                    file should be closed when finished.</p>
+                <div class="sub-container container-fluid px-0 my-2">
+                    <h3 class="sub-container-header mx-0 py-3">Opening a Text File</h3>
+                    <div class=" font-code px-5">
+                        <p class="font-code"><span class="vb-action font-code"> Open</span>
+                            "z:\mydata.txt " <span class="vb-action font-code">For Input As</span> #1 <span
+                                class="vb-comment font-code">' Open the first file for input</span></p>
+                        <p class="vb-comment">'OR</p>
+                        <p class="font-code"><span class="vb-action font-code"> Open</span>
+                            "z:\results.txt " <span class="vb-action font-code">For Output As</span> #1 <span
+                                class="vb-comment font-code">' Open the first file for output</span></p>
+                        <p class="vb-comment">'OR</p>
+                        <p class="font-code"><span class="vb-action font-code"> Open</span>
+                            "z:\mydata.txt " <span class="vb-action font-code">For Append As</span> #1 <span
+                                class="vb-comment font-code">' Open the first file to add more data to file</span></p>
+                    </div>
+                    <p class="sub-container-text mx-0  p-0">It should be noted that #1 is used to indicate the first
+                        file
+                        being opened. Where a second file was
+                        to be
+                        opened #2 would be used above. All files opened are given a unique reference number, here it is
+                        1.
+                        The
+                        reference number ranges from 1 to 255. The reference number is used as a communications link
+                        between
+                        the
+                        programme and the file</p>
+                </div>
+            </div>
+        </div>
+        <div class="sub-container container-fluid px-5 py-2">
+            <h3 class="sub-container-header mx-0 py-3">Write data to a Text File</h3>
+            <div class="mx-3 mx-md-5">
+                <p class="sub-container-text mx-0  p-0">Consider the following example where you have three variables
+                    the
+                    dimension <em>x</em>, the distance
+                    along a
+                    beam from left-hand support, the <em>stress</em> in the beam at point <em>x</em> and the
+                    <em>deflection</em>
+                    at point <em>x</em> in the beam. Field 1 contains the x value, field 2 contains the stress and field
+                    3
+                    contains the deflection. If you are appending to a pre-existing file, it is important to ensure the
+                    order of
+                    your field entry is correct.</p>
 
-            <p> To avoid unnecessarily lost marks, prior to the submission, check you have
-                completed the following</p>
-            <ul>
-                <li>Excel file has been saved as a Macro-Enabled Workbook – failure to do this will result in the
-                    submission
-                    of a blank excel file – which results in lost marks.</li>
-                <li>The report has been scanned to PDF and combined into a single file. Mobile apps such as Microsoft
-                    Lens,
-                    Adobe scan and many others are available to do this.&nbsp;</li>
-                <li>Sections that are required to be handwritten are done so. These sections submitted
-                    typed, will
-                    result in
-                    lost marks.</li>
-                <li>The PDF is checked before submission to ensure all pages are present, in the correct order, legible
+                    <p class="font-code mx-5"><span class="vb-action font-code"> Write</span> #1, x ,
+                        stress , deflection</p>
+
+                <p class="sub-container-text mx-0 p-0">In this example the three pieces of information are written to
+                    the
+                    file with comma separation, as with
+                    the
+                    field order, ensure you utilise the separation command used in any pre-existing file.</p>
+            </div>
+        </div>
+        <div class="sub-container container-fluid px-5 py-2">
+            <h3 class="sub-container-header mx-0 py-3">Closing a Text File</h3>
+            <div class="mx-3 mx-md-5">
+                <p>Ensure when a file is opened, it is always closed. The file number (ie. #1) is no longer associated
                     with
-                    the correct orientation. Any missing or illegible content will result in lost
-                    marks.</li>
-            </ul>
-            <p>Any queries on the assignment should be asked on the class discussion board on Brightspace.</p>
+                    that
+                    file upon Close and therefore that file number can be reused on a subsequent open document.</p>
+
+                    <p class="font-code mx-5"><span class="vb-action font-code"> Close</span> #1</p>
+
+                <p>If several files are open, they can all be closed at once by using "Close" on its own without the
+                    file
+                    number.</p>
+            </div>
         </div>
 
+        <div class="sub-container container-fluid px-5 py-2">
+            <h3 class="sub-container-header mx-0 py-3">Reading from a Text File</h3>
+            <div class="mx-3 mx-md-5">
+                <p class="sub-container-text mx-0 p-0">Consider the following example where you have the same three
+                    variables as above (x, stress and
+                    displacement).
+                    Be mindful of the field arrangement in the original text file before assigning data to these
+                    variables.
+                    your
+                    field entry is correct.</p>
 
+                    <p class="font-code mx-5"><span class="vb-action font-code"> Input</span> #1, x ,
+                        stress , deflection</p>
 
-
-        <div class="container center-all">
-            <h2>Problem</h2>
-            <img src="/content/enforced/178647-EMAT260114933DT032-2122/90. Assignments/Assignment 1/Images/SS_parab.jpg"
-                alt="" data-d2l-editor-default-img-style="true"></p>
-            <p>This figure shows a simply supported beam of length <em>L</em> subjected to a sin curve varying load,
-                with maximum magnitude <em>q</em><sub>0</sub>, applied along its full length.</p>
-            <p>You should design a userform which contains an image of the beam, a frame for the input values, a
-                command button to trigger the calculations, and a frame to output the results.&nbsp;</p>
-            <p>The output should include:</p>
-            <ul>
-                <li>the maximum displacement</li>
-                <li>the displacement at a point x (provided by user)</li>
-                <li>the rotation of the support.</li>
-            </ul>
-            <p>All required equations are provided below.</p>
-
-
-        </div>
-        <hr>
-
-
-        <div class="container display-flex center-all">
-            <h2>Equations</h2>
-            <p>It can be assumed that the beam has a solid rectangular cross-section, therefore the second moment of
-                area is
-                given by:</p>
-            <p class="cmath equation">`I = frac(bd^3)(12)`</p>
-
-            <p>The maximum deflection in the centre of the beam is given by:</p>
-            <p class="cmath equation">`delta_(max) = frac(q_0 L^4)(pi^4 EI)`</p>
-
-
-            <p>The angle of rotation (slope) of the beam at the supports is given by:</p>
-            <p class="cmath equation">`theta_A= theta_B = frac(q_0 L^3)(pi^3 EI)`</p>
-
-            <p>The deflection at any distance x from the left-hand support is given by:</p>
-            <p class="cmath equation">`delta_x= frac(q_0 L^4)(pi^4 EI) sin frac(pi x)(L)`</p>
-
-            <p>Where:</p>
-            <ul>
-                <li>b = width of the beam</li>
-                <li>d = depth of the beam</li>
-                <li>L = length of the beam</li>
-                <li>E = Young's Modulus, you can take a default value for
-                    concrete of 30 GPa (30 kN/mm<sup>2</sup>)</li>
-                <li>q<sub>0</sub> = Maximum magnitude of sin curve varying load applied along the length of the
-                    beam.</li>
-            </ul>
-
+                <p class="sub-container-text mx-0 p-0">Note in this example the file has the fields separated with a
+                    comma,
+                    and hence commas are used in the
+                    call-up.</p>
+            </div>
         </div>
 
-        <div class="pdf-container display-flex center-all">
-            <button class="btn-save" id="download">Save to PDF</button>
+        <div class="sub-container container-fluid px-5 py-2">
+
+            <h3 class="sub-container-header mx-0 py-3">Datatypes</h3>
+            <div class="mx-3 mx-md-5">
+                <p class="sub-container-text mx-0 p-0">The variables in the examples above utilise the same field order
+                    (i.e. x, stress, displacement). In
+                    addition
+                    to field order, it is also important to ensure each field (i.e. x values) should be the same
+                    datatype
+                    (i.e.
+                    String/Single/Integer etc).</p>
+            </div>
         </div>
 
-        <footer id="footer" class="display-flex center-all">
-            <p class="footer-text">&copy; TU Dublin <span id="date"></span></p>
-        </footer>
+        <div class="sub-container container-fluid px-5 py-2">
+
+            <h3 class="sub-container-header mx-0 py-3">Determining "End of File"</h3>
+            <div class="mx-3 mx-md-5">
+                <p class="sub-container-text mx-0 p-0">The end of file (EOF) function is used to avoid overwriting
+                    pre-existing information or trying to read
+                    data
+                    past the end of the file. The function returns an integer (0 or 1) outlining whether the result is
+                    True
+                    (1)
+                    or False (0).</p>
+                <p class="sub-container-text mx-0 p-0">When the function returns true, this means the end of the file
+                    has
+                    been reached. This function is
+                    typically
+                    used as a condition in a loop or if statement.</p>
+                <p class="sub-container-text mx-0 p-0">In the following example, the file with reference number 1 (#1)
+                    is
+                    being checked:</p>
+                <p class="font-code mx-5">EOF(1)</p>
+
+            </div>
+        </div>
+
+        <div class="sub-container container-fluid px-5 py-2">
+            <h2 class="sub-container-header mx-0 py-3">Example</h2>
+            <div class="mx-3 mx-md-5">
+                <p class="sub-container-text mx-0 p-0">Assume the text file "z:\input.txt" contains the following data:
+                </p>
+                <div class="font-code px-5">
+                    <p class="font-code">"Joe Bloggs", 23</p>
+                    <p class="font-code">"Mary Tobin", 47</p>
+                    <p class="font-code">"Jack Smart", 76</p>
+                    <p class="font-code">"Carol Cracker", 80</p>
+                </div>
+                <p class="sub-container-text mx-0 p-0">The following code fragment will read each line, output its
+                    contents to a message box until the end of
+                    the
+                    file is reached.</p>
+                <div class="font-code px-5">
+                    <p class="font-code"><span class="vb-action font-code"> Dim</span> name
+                        <span class="vb-action font-code">As String</span>, result <span class="vb-action font-code">As
+                            Integer</span></p>
+                    <p class="font-code"><span class="vb-action font-code"> Open</span>
+                        "z:\input.txt" <span class="vb-action font-code">For Input As</span> #1</p>
+                    <p class="vb-action font-code">Do</p>
+                    <p class="font-code"><span class="vb-action font-code"> Input</span> #1,
+                        name,
+                        result</p>
+                    <p class="font-code">MsgBox "Name: " &amp; name &amp; "; Result: " &amp;
+                        result
+                    </p>
+                    <p class="font-code"><span class="vb-action font-code"> Loop Until</span>
+                        EOF(1)
+                    </p>
+                    <p class="font-code"><span class="vb-action font-code"> Close</span> #1</p>
+                </div>
+            </div>
+
+            <div class="sub-container container-fluid px-5 py-2"></div>
+            <h3>Try it out...</h3>
+            <div class="mx-3 mx-md-5">
+                <p>Work through the following videos to learn how to work with Text Files. Create your textfiles in an
+                    easily
+                    located folder, if in college Z drive is recommended.</p>
+            </div>
+        </div>
+    </div>
+    <footer class="footer font-roboto d-flex justify-content-center align-items-center container-fluid">© TU Dublin 2021
+    </footer>
 
     </div>
     <!-- CDN for jquery -->
